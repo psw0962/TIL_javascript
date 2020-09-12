@@ -150,4 +150,4 @@ getHen() //
     .then(cook)
     .then(console.log) // chicken => egg => fried egg
     .catch(console.log); // bread => fried egg
-```  
+```
