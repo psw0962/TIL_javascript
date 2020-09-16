@@ -130,7 +130,7 @@ randomQuiz('love you', printYes, printNo); // yes!
 const simplePrint = function () {
 console.log('simplePrint!');
 };
-// -> 이와같은 형태으 함수를 아래처럼 바꿔서 쓸 수 있다
+// -> 이와같은 형태의 함수를 아래처럼 바꿔서 쓸 수 있다
 
 const simplePrint = () => console.log('simplePrint!');
 const add = (a, b) => a + b;
