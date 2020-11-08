@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Coordinates</title>
+
+    <style>
+        body {
+            background-color: black;
+        }
+        
+        div {
+            background-color: burlywood;
+            width: 250px;
+            height: 250px;
+            margin-bottom: 4px;
+            border: 4px;
+        }
+        
+        .spacial {
+            background-color: crimson;
+        }
+        
+        aside {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="spacial"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <aside>
+        <button class="scroll-by">scrollBy</button>
+        <button class="scroll-to">scrollTo</button>
+        <button class="scroll-into">scrollInto</button>
+    </aside>
+
+    <script>
+        const spacial = document.querySelector('.spacial');
+
+        spacial.addEventListener('click', (event) => {
+            const rect = spacial.getBoundingClientRect();
+            console.log(rect);
+            console.log(`client: ${event.clientX}, ${event.clientY}`);
+            console.log(`page: ${event.pageX}, ${event.pageY}`);
+        });
+
+        const scrollBy = document.querySelector('.scroll-by');
+        const scrollTo = document.querySelector('.scroll-to');
+        const scrollInto = document.querySelector('.scroll-into');
+
+        scrollBy.addEventListener('click', () => {
+            window.scrollBy({
+                top: 100,
+                let: 0,
+                behavior: "smooth"
+            });
+        });
+
+
+        scrollTo.addEventListener('click', () => {
+            window.scrollTo(0, 100);
+        });
+
+
+        scrollInto.addEventListener('click', () => {
+            spacial.scrollIntoView();
+        });
+    </script>
+</body>
+
+</html>
