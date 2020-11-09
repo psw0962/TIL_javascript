@@ -3,16 +3,19 @@ const horozontal = document.querySelector('.horozontal');
 const target = document.querySelector('.target');
 const tag = document.querySelector('.tag');
 
-document.addEventListener('mousemove', (event) => {
-    const x = event.clientX;
-    const y = event.clientY;
-    // console.log(`${x} ${x}`);
+addEventListener('load', () => {
+    const targetRect = target.getBoundingClientRect();
+    const targetHalWidth = targetRect.width / 2;
+    const targetHalHeight = targetRect.height / 2;
 
-    vertical.style.left = `${x}px`;
-    horozontal.style.top = `${y}px`;
-    target.style.left = `${x}px`;
-    target.style.top = `${y}px`;
-    tag.style.left = `${x}px`;
-    tag.style.top = `${y}px`;
-    tag.innerHTML = `${x}px, ${y}px`
-})
+    document.addEventListener('mousemove', (event) => {
+        const x = event.clientX;
+        const y = event.clientY;
+
+        vertical.style.transform = `translateX(${x}px)`;
+        horozontal.style.transform = `translateY(${y}px)`;
+        target.style.transform = `translate(${x-targetHalWidth}px, ${y-targetHalHeight}px)`;
+        tag.style.transform = `translate(${x}px, ${y}px)`;
+        tag.innerHTML = `${x}px, ${y}px`;
+    });
+});
